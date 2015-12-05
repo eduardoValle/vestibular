@@ -12,7 +12,7 @@ Requisitos do sistema
 
 É recomendado PHP na versão 5.4 ou mais recente.
 
-Ele deve funcionar na versão 5.2.4, mas nós aconselho que você não use tais versões antigas do PHP,
+Ele deve funcionar na versão 5.2.4, mas aconselho que você não use as versões antigas do PHP,
 por causa do potencial de segurança e desempenho, bem como recursos ausentes.
 
 ************
