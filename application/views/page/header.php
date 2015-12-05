@@ -9,13 +9,13 @@
         <nav>
             <ul class="menu">
                 <li class="li"><a href="<?php echo base_url('index.php/formulario/inicio'); ?>" class="opensub">Inicio</a></li>
-                <li class="li"><a class="opensub" onclick="return false;" href="#">Formulário</a>
+                <li class="li"><a class="opensub" onclick="return false;" href="#">Cursos</a>
                     <ul class="sub">
-                        <li><a href="<?php echo base_url('index.php/formulario/cadastrar'); ?>">Cadastrar-se</a></li>
+                        <li><a href="<?php echo base_url('index.php/formulario/cadastrar'); ?>">Cadastrar Curso</a></li>
                         <li><a href="#">Em Manutenção</a></li>
                     </ul>
                 </li>
-                <li class="li"><a href="<?php echo base_url('index.php/formulario/contato'); ?>" class="opensub">Entre em contato</a></li>
+                <li class="li"><a href="<?php echo base_url('index.php/formulario/contato'); ?>" class="opensub">Inscrições</a></li>
             </ul>
         </nav>
         <div class="clear"></div>

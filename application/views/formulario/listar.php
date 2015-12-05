@@ -16,11 +16,11 @@
                 <tbody>
                     <?php foreach ($dados as $dado): ?>
                         <tr>
-                            <td><?= $dado['curso']; ?></td>
-                            <td><?= $dado['turno']; ?></td>
-                            <td><?= $dado['periodo']; ?></td>
-                            <td><?= $dado['valor']; ?></td>
-                            <td><a href="curso.php?detalhes=">Detalhes</a></td>
+                            <td><?= $dado->curso; ?></td>
+                            <td><?= $dado->turnos; ?></td>
+                            <td><?= $dado->periodos; ?></td>
+                            <td><?= $dado->valor; ?></td>
+                            <td><a href="atualizar?detalhes=<?= $dado->id_curso; ?>">Detalhes</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

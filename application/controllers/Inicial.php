@@ -6,6 +6,10 @@ class Inicial extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        
+        if ($this->session->userdata('nome')):
+            redirect('formulario/inicio');
+        endif;
     }
 
     public function index() {
@@ -27,15 +31,12 @@ class Inicial extends CI_Controller {
             redirect('inicial?exe=erro');
         } else {
 
-            
             $this->load->model('user');
-            
             $dados = array(
                 'email' => $this->input->post('email'),
-               // 'senha' => md5($this->input->post('senha'))
+                // 'senha' => md5($this->input->post('senha'))
                 'senha' => $this->input->post('senha')
             );
-            
             $user = $this->user->verificaLogin($dados['email'], $dados['senha']);
             
             if ($user) {

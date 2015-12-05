@@ -8,26 +8,14 @@ class Inicio extends CI_Controller {
         parent::__construct();
         
         $this->load->model('crud');
-
         if (!$this->session->userdata('nome')):
             redirect('inicial?exe=restrito');
         endif;
     }
 
     public function index() {
-
-        $dados['dados'] = array(
-            array('curso' => 'Engenharia de computação', 'turno' => 'Noite', 'periodo' => '10', 'valor' => '690,00'),
-            array('curso' => 'Engenharia Mecanica', 'turno' => 'Noite', 'periodo' => '10', 'valor' => '690,00'),
-            array('curso' => 'Engenharia Minas', 'turno' => 'Noite', 'periodo' => '10', 'valor' => '690,00'),
-            array('curso' => 'Medicina veterinaria', 'turno' => 'Tarde', 'periodo' => '10', 'valor' => '980,00'),
-            array('curso' => 'Engenharia de Produção', 'turno' => 'Tarde', 'periodo' => '10', 'valor' => '690,00'),
-            array('curso' => 'Engenharia de controle e automação', 'turno' => 'Manhã', 'periodo' => '10', 'valor' => '690,00'),
-            array('curso' => 'Enfermagemo', 'turno' => 'Manhã', 'periodo' => '10', 'valor' => '780,00')
-        );
-        
-        
-        
+     
+        $dados['dados'] = $this->crud->ler('cursos');
 
         $content = $this->load->view('formulario/listar', $dados, true);
         $this->page->loadPage($content);
