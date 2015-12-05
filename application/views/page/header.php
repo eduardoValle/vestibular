@@ -3,6 +3,7 @@
         <a href="<?php echo base_url('index.php/formulario/inicio'); ?>" class="logomarca">Exercício Final de Estapa</a>
         <ul class="systema_nav">
             <li class="username">Olá <?= $this->session->userdata('nome'); ?>, bem vindo ao site!!</li>
+            <li><a class="icon users"   title="Usuários" href="<?php echo base_url('index.php/usuarios/usuarios'); ?>"> Usuários </a></li>
             <li><a class="icon logout"  title="Logoff"   href="<?php echo base_url('index.php/formulario/inicio/logoff'); ?>"> Logoff </a></li>
         </ul>
 
@@ -15,7 +16,7 @@
                         <li><a href="#">Em Manutenção</a></li>
                     </ul>
                 </li>
-                <li class="li"><a href="<?php echo base_url('index.php/formulario/contato'); ?>" class="opensub">Inscrições</a></li>
+                <li class="li"><a href="<?php echo base_url('index.php/formulario/inscritos'); ?>" class="opensub">Inscritos</a></li>
             </ul>
         </nav>
         <div class="clear"></div>

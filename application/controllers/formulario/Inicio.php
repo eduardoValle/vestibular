@@ -26,15 +26,12 @@ class Inicio extends CI_Controller {
         $curso_id = $this->input->get('excluir');
 
         if($curso_id){
-
             $where = "id_curso= {$curso_id}";
             $result = $this->crud->excluir('cursos', $where);
 
             if($result){
-
                 redirect("formulario/inicio?exe=sucesso");
             }else{
-
                 redirect("formulario/inicio?exe=erroexcluir");
             }
         }

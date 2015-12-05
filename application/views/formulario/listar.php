@@ -5,45 +5,44 @@
             
             <div>
                 <?php
-                //******    VALIDACAO DE ERROS DE DO FORMULARIO   ******//
-                // Usando GET para validar o retorno e inserir a mensagem de erros adequada
+                // Usando GET para validar o retorno e inserir a mensagem de erro adequada
                 $get = filter_input(INPUT_GET, 'exe', FILTER_DEFAULT);
 
                 if(!empty($get)){
-                    if($get == 'excluido'){
+                    if($get == 'sucesso'){
 
                         MsgErro("<b>Ok, Cruso excluido com sucesso!!</b>", MSG_ACCEPT);
-                    } elseif($get == 'errocexcluir'){
+                    } elseif($get == 'erroexcluir'){
 
                         MsgErro("<b>Erro ao excluir, não foi possivel excluir o curso selecionado!!</b>", MSG_ERROR);
                     }
                 }
                 ?>
             </div>
-            
-            
-            <table border="1" class="table table-striped table-responsive">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Turno</th>
-                        <th>Períodos</th>
-                        <th>Valor mensal</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($dados as $dado): ?>
+            <div>
+                <table border="1" class="table table-striped table-responsive">
+                    <thead>
                         <tr>
-                            <td><?= $dado->curso; ?></td>
-                            <td><?= $dado->turnos; ?></td>
-                            <td><?= $dado->periodos; ?></td>
-                            <td><?= $dado->valor; ?></td>
-                            <td><a href="atualizar?detalhes=<?= $dado->id_curso; ?>">Detalhes</a> / <a href="inicio/excluir?excluir=<?= $dado->id_curso; ?>">Excluir</a></td>
+                            <th>Curso</th>
+                            <th>Turno</th>
+                            <th>Períodos</th>
+                            <th>Valor mensal</th>
+                            <th></th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($dados as $dado): ?>
+                            <tr>
+                                <td><?= $dado->curso; ?></td>
+                                <td><?= $dado->turnos; ?></td>
+                                <td><?= $dado->periodos; ?></td>
+                                <td><?= $dado->valor; ?></td>
+                                <td><a href="atualizar?detalhes=<?= $dado->id_curso; ?>">Detalhes</a> / <a href="inicio/excluir?excluir=<?= $dado->id_curso; ?>">Excluir</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </article>
     <div class="clear"></div>

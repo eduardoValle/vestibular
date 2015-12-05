@@ -2,11 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contato extends CI_Controller {
+class Inscritos extends CI_Controller {
 
     function __construct() {
         parent::__construct();
 
+        $this->load->model('crud');
         if (!$this->session->userdata('nome')):
             redirect('inicial?exe=restrito');
         endif;
@@ -14,7 +15,9 @@ class Contato extends CI_Controller {
 
     public function index() {
 
-        $content = $this->load->view('formulario/contato', "", true);
+        $dados['dados'] = $this->crud->ler('inscritos');
+        
+        $content = $this->load->view('formulario/inscritos', $dados, true);
         $this->page->loadPage($content);
     }
 }
