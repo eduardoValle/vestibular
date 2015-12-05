@@ -42,7 +42,6 @@ class Atualizar extends CI_Controller {
             redirect("formulario/atualizar?detalhes={$curso_id}&exe=erro");
 
         } else{
-            $curso_id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
             $set = array(
                 'curso'  => $this->input->post('curso'),
                 'turnos' => $this->input->post('turnos'),

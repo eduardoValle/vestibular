@@ -1,8 +1,27 @@
 <div class="content form_create">
-
     <article>
         <h1>Abaixo estão informações de nossos cursos:</h1>
         <div class="conteudo">
+            
+            <div>
+                <?php
+                //******    VALIDACAO DE ERROS DE DO FORMULARIO   ******//
+                // Usando GET para validar o retorno e inserir a mensagem de erros adequada
+                $get = filter_input(INPUT_GET, 'exe', FILTER_DEFAULT);
+
+                if(!empty($get)){
+                    if($get == 'excluido'){
+
+                        MsgErro("<b>Ok, Cruso excluido com sucesso!!</b>", MSG_ACCEPT);
+                    } elseif($get == 'errocexcluir'){
+
+                        MsgErro("<b>Erro ao excluir, não foi possivel excluir o curso selecionado!!</b>", MSG_ERROR);
+                    }
+                }
+                ?>
+            </div>
+            
+            
             <table border="1" class="table table-striped table-responsive">
                 <thead>
                     <tr>
@@ -20,7 +39,7 @@
                             <td><?= $dado->turnos; ?></td>
                             <td><?= $dado->periodos; ?></td>
                             <td><?= $dado->valor; ?></td>
-                            <td><a href="atualizar?detalhes=<?= $dado->id_curso; ?>">Detalhes</a></td>
+                            <td><a href="atualizar?detalhes=<?= $dado->id_curso; ?>">Detalhes</a> / <a href="inicio/excluir?excluir=<?= $dado->id_curso; ?>">Excluir</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

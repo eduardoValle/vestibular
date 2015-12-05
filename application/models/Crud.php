@@ -86,7 +86,7 @@ class Crud extends CI_Model {
      * @param type $where  Condição para se realizar a exclusão. Deve estar no formato array ex.: array('nomeColuna' => 'valor').
      * @return boolean TRUE se ocoreu a atualização. 
      */
-    public function deletar($tabela, $where) {
+    public function excluir($tabela, $where) {
 
         return $query = $this->db->delete($tabela, $where);
     }
