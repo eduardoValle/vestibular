@@ -16,7 +16,8 @@ class Inicial extends CI_Controller {
     public function login() {
 
         $rules = array(
-            array('field' => 'nome', 'label' => 'NOME', 'rules' => 'required'),
+            array('field' => 'email', 'label' => 'NOME', 'rules' => 'required'),
+            array('field' => 'senha', 'label' => 'SENHA', 'rules' => 'required')
         );
 
         $this->form_validation->set_rules($rules);
@@ -26,9 +27,24 @@ class Inicial extends CI_Controller {
             redirect('inicial?exe=erro');
         } else {
 
-            if ($this->input->post('nome')) {
+            
+            $this->load->model('user');
+            
+            $dados = array(
+                'email' => $this->input->post('email'),
+               // 'senha' => md5($this->input->post('senha'))
+                'senha' => $this->input->post('senha')
+            );
+            
+            $user = $this->user->verificaLogin($dados['email'], $dados['senha']);
+            
+            if ($user) {
                 $this->session->set_userdata(array(
-                    'nome' => $this->input->post('nome'),
+                    'id'    => $user[0]->id,
+                    'nome'  => $user[0]->nome,
+                    'email' => $user[0]->email,
+                    'senha' => $user[0]->senha,
+                    'nivel' => $user[0]->nivel
                 ));
                 redirect('formulario/inicio');
             } else {

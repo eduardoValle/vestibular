@@ -1,25 +1,31 @@
 <div class="content form_create">
 
     <article>
-        <h1>Seja bem vindo ao site!! Abaixo estão informações de nossos cursos</h1>
-
-        <ul class="ultable">
-            <li class="t_title">
-                <span class="un">Nome do Curso</span>
-                <span class="un">Turno</span>
-                <span class="un">Número de Períodos</span>
-                <span class="un center">Valor</span>
-            </li>
-
-            <?php foreach($dados as $dado):?>            
-                <li>
-                    <span class="un"><?= $dado['curso']; ?></span>
-                    <span class="un"><?= $dado['turno']; ?></span>
-                    <span class="un center"><?= $dado['periodo']; ?></span>
-                    <span class="un center"><?= $dado['valor']; ?></span>
-                </li>
-            <?php endforeach;?>
-        </ul>
+        <h1>Abaixo estão informações de nossos cursos:</h1>
+        <div class="conteudo">
+            <table border="1" class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Turno</th>
+                        <th>Períodos</th>
+                        <th>Valor mensal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($dados as $dado): ?>
+                        <tr>
+                            <td><?= $dado['curso']; ?></td>
+                            <td><?= $dado['turno']; ?></td>
+                            <td><?= $dado['periodo']; ?></td>
+                            <td><?= $dado['valor']; ?></td>
+                            <td><a href="curso.php?detalhes=">Detalhes</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </article>
     <div class="clear"></div>
 </div>

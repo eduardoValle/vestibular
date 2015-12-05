@@ -9,7 +9,6 @@
     </head>
 
     <body class="login">
-
         <div id="login">
             <div class="boxin">
                 <h1>Exercício Final de Etapa</h1>
@@ -30,7 +29,6 @@
                         MsgErro('<b>Dados incompletos ou inválidos!!</b></br> Você precisa colocar um nome para entrar!!', MSG_INFOR);
                     }
                 }
-
                 //******    FORMULARIO   ******//
                 validation_errors();
                 $AdminLoginForm = array(
@@ -42,7 +40,9 @@
 
                 echo form_open('inicial/login', $AdminLoginForm);
                     echo form_label('Nome:', 'nome', array('class' => 'login_label'));
-                    echo form_input(array('type' => 'nome', 'name' => 'nome', 'class' => 'login_input'));
+                    echo form_input(array('type' => 'email', 'name' => 'email', 'class' => 'login_input'));
+                    echo form_label('Senha:', 'senha', array('class' => 'login_label'));
+                    echo form_input(array('type' => 'password', 'name' => 'senha', 'class' => 'login_input'));
                     echo '<input type="submit" value="Logar" class="btn black" />';
                 echo form_close();
                 ?>

@@ -6,6 +6,8 @@ class Inicio extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        
+        $this->load->model('crud');
 
         if (!$this->session->userdata('nome')):
             redirect('inicial?exe=restrito');
@@ -23,6 +25,9 @@ class Inicio extends CI_Controller {
             array('curso' => 'Engenharia de controle e automação', 'turno' => 'Manhã', 'periodo' => '10', 'valor' => '690,00'),
             array('curso' => 'Enfermagemo', 'turno' => 'Manhã', 'periodo' => '10', 'valor' => '780,00')
         );
+        
+        
+        
 
         $content = $this->load->view('formulario/listar', $dados, true);
         $this->page->loadPage($content);
