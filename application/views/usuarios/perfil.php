@@ -41,7 +41,7 @@
                 'id' => 'perfil'
             );
 
-            echo form_open('users/perfil/update', $UserEditForm);
+            echo form_open('usuarios/perfil/update', $UserEditForm);
 
                 echo '<label class="label_large">';
                     echo form_label('Nome:', 'name', array('class' => 'field'));
@@ -68,11 +68,11 @@
                             <option value = "">Selecione o Nível</option>
                             <option value = "1" <?php if($this->session->userdata('nivel') == 1) echo 'selected="selected"'; ?>>User</option>
                             <option value = "2" <?php if($this->session->userdata('nivel') == 2) echo 'selected="selected"'; ?>>Editor</option>
-                            <option value = "3" <?php if($this->session->userdata('nivel') == 3) echo 'selected="selected"'; ?>>Admin</option>
+                            <option value = "3" <?php if($this->session->userdata('nivel') < 3){ echo 'disabled="disabled"';} ?> <?php if($this->session->userdata('nivel') == 3) echo 'selected="selected"'; ?>>Admin</option>
                         </select>
                     </label>
                 </div>
-                <input type="submit" name="UserUpdate" value="Atualizar Usuário" class="btn green" />
+                <input type="submit" name="UserUpdate" value="Atualizar usuário" class="btn green" />
 
         <?php echo form_close(); ?>
     </article>

@@ -42,7 +42,7 @@
                 'id' => 'usuario'
             );
 
-            echo form_open('users/cadastro/inserir', $UserCadastro);
+            echo form_open('usuarios/cadastro/inserir', $UserCadastro);
 
                 echo '<label class="label_large">';
                     echo form_label('Nome:', 'name', array('class' => 'field'));
@@ -51,7 +51,7 @@
 
                 echo '<label class="label_large">';
                     echo form_label('E-mail:', 'mail', array('class' => 'field'));
-                    echo form_input(array('type' => 'text', 'id' => 'mail', 'class' => 'field', 'name' => 'email', 'value' => '', 'title' => 'Informe seu e-mail!!'), 'required');
+                    echo form_input(array('type' => 'email', 'id' => 'mail', 'class' => 'field', 'name' => 'email', 'value' => '', 'title' => 'Informe seu e-mail!!'), 'required');
                 echo '</label>';
         ?>
 

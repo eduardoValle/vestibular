@@ -7,16 +7,15 @@ class Cadastro extends CI_Controller{
     function __construct(){
         parent::__construct();
 
-        $this->load->model('crud');
-
         if(!$this->session->userdata('email')):
             redirect('inicial?exe=restrito');
         endif;
+        $this->load->model('crud');
     }
 
     public function index(){
 
-        $content = $this->load->view('users/Cadastro', null, true);
+        $content = $this->load->view('usuarios/Cadastro', null, true);
         $this->page->loadPage($content);
     }
 
@@ -33,7 +32,7 @@ class Cadastro extends CI_Controller{
 
         if(!$this->form_validation->run()){
 
-            redirect('users/cadastro?exe=erro');
+            redirect('usuarios/cadastro?exe=erro');
         } else{
 
             $dados = array(
@@ -41,19 +40,15 @@ class Cadastro extends CI_Controller{
                 'email' => $this->input->post('email'),
                 'senha' => md5($this->input->post('senha')),
                 'nivel' => $this->input->post('nivel'),
-                'data'  => date('d/m/Y H:i:s')
+                'data_modificacao'  => date('d/m/Y H:i:s')
             );
 
             $user = $this->crud->inserir('usuarios', $dados);
-
             if($user){
-
-                redirect('users/cadastro?exe=sucesso');
+                redirect('usuarios/cadastro?exe=sucesso');
             } else{
-
-                redirect('users/cadastro?exe=errocadastrar');
+                redirect('usuarios/cadastro?exe=errocadastrar');
             }
         }
     }
-
 }

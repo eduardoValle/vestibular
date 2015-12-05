@@ -41,7 +41,6 @@
             );
 
             echo form_open('usuarios/editarusuario/update?id='.$usuario->id, $UserEditForm);
-
                 echo '<label class="label_large">';
                     echo form_label('Nome:', 'name', array('class' => 'field'));
                     echo form_input(array('type' => 'text', 'id' => 'name', 'class' => 'field', 'name' => 'nome', 'value' => $usuario->nome, 'title' => 'Informe um nome!!'), 'required');
@@ -52,7 +51,6 @@
                     echo form_input(array('type' => 'email', 'id' => 'mail', 'class' => 'field', 'name' => 'email', 'value' => $usuario->email, 'title' => 'Informe um e-mail!!'), 'required');
                 echo '</label>';
         ?>
-
                 <div class="label_line">
         <?php
                     echo '<label class="label_medium">';
@@ -60,17 +58,16 @@
                         echo form_input(array('type' => 'password', 'id' => 'pass', 'class' => 'field', 'name' => 'senha', 'value' => $usuario->senha, 'title' => 'Informe sua senha [ de 6 a 12 caracteres!! ]'));
                     echo '</label>';
         ?>
-
                     <label class="label_medium">
                         <span class="field">Nível:</span>
                         <select name = "nivel" title = "Selecione o nível de usuário!!" required >
                             <option value = "">Selecione o Nível</option>
                             <option value = "1" <?php if($usuario->nivel == 1) echo 'selected="selected"'; ?>>User</option>
                             <option value = "2" <?php if($usuario->nivel == 2) echo 'selected="selected"'; ?>>Editor</option>
-                            <option value = "3" <?php if($usuario->nivel == 3) echo 'selected="selected"'; ?>>Admin</option>
+                            <option value = "3" <?php if($this->session->userdata('nivel') < 3){ echo 'disabled="disabled"';} ?> <?php if($usuario->nivel == 3) echo 'selected="selected"'; ?>>Admin</option>
                         </select>
                     </label>
-                    
+
                     <label class="label_medium">
                         <span class="field">Status</span>
                         <select name = "status" title = "Selecione o nível de usuário!!" required >
@@ -81,7 +78,6 @@
                     </label>
                 </div>
                 <input type="submit" name="UserUpdate" value="Atualizar Usuário" class="btn green" />
-
         <?php echo form_close(); ?>
     </article>
     <div class="clear"></div>

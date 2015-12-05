@@ -16,7 +16,7 @@ class Perfil extends CI_Controller{
 
     public function index(){
 
-        $content = $this->load->view('users/perfil', null, true);
+        $content = $this->load->view('usuarios/perfil', null, true);
         $this->page->loadPage($content);
     }
 
@@ -30,11 +30,9 @@ class Perfil extends CI_Controller{
         );
 
         $this->form_validation->set_rules($rules);
-
         if(!$this->form_validation->run()){
 
-            redirect('users/perfil?exe=erro');
-
+            redirect('usuarios/perfil?exe=erro');
         } else{
 
             $set = array(
@@ -46,14 +44,11 @@ class Perfil extends CI_Controller{
 
             $where = "id = {$this->session->userdata('id')}";
             $result = $this->crud->atualizar('usuarios', $set, $where);
-
             if($result){
-
                 $this->session->set_userdata($set);
-                redirect('users/perfil?exe=sucesso');
+                redirect('usuarios/perfil?exe=sucesso');
             }else{
-
-                redirect('users/perfil?exe=erroatualizar');
+                redirect('usuarios/perfil?exe=erroatualizar');
             }
         }
     }

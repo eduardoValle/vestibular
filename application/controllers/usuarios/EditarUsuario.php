@@ -33,31 +33,23 @@ class EditarUsuario extends CI_Controller{
             array('field' => 'nivel', 'label' => 'nivel', 'rules' => 'required'),
             array('field' => 'status', 'label' => 'status', 'rules' => 'required')
         );
-
         $this->form_validation->set_rules($rules);
-
         if(!$this->form_validation->run()){
-
             redirect("usuarios/editarusuario?id={$user_id}&exe=erro");
-
         } else{
             $user_id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
             $set = array(
                 'nome'  => $this->input->post('nome'),
                 'email' => $this->input->post('email'),
-                'senha' => $this->input->post('senha'),
+                'senha' => md5($this->input->post('senha')),
                 'nivel' => $this->input->post('nivel'),
                 'status'=> $this->input->post('status')
             );
-
             $where = "id = {$user_id}";
             $result = $this->crud->atualizar('usuarios', $set, $where);
-
             if($result){
-
                 redirect("usuarios/editarusuario?id={$user_id}&exe=sucesso");
             }else{
-
                 redirect("usuarios/editarusuario?id={$user_id}&exe=erroatualizar");
             }
         }
