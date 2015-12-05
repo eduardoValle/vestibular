@@ -40,7 +40,7 @@
                 'id' => 'usuarios'
             );
 
-            echo form_open('users/editarusuario/update?id='.$usuario->id, $UserEditForm);
+            echo form_open('usuarios/editarusuario/update?id='.$usuario->id, $UserEditForm);
 
                 echo '<label class="label_large">';
                     echo form_label('Nome:', 'name', array('class' => 'field'));
@@ -49,7 +49,7 @@
 
                 echo '<label class="label_large">';
                     echo form_label('E-mail:', 'mail', array('class' => 'field'));
-                    echo form_input(array('type' => 'text', 'id' => 'mail', 'class' => 'field', 'name' => 'email', 'value' => $usuario->email, 'title' => 'Informe um e-mail!!'), 'required');
+                    echo form_input(array('type' => 'email', 'id' => 'mail', 'class' => 'field', 'name' => 'email', 'value' => $usuario->email, 'title' => 'Informe um e-mail!!'), 'required');
                 echo '</label>';
         ?>
 
@@ -57,7 +57,7 @@
         <?php
                     echo '<label class="label_medium">';
                         echo form_label('Senha:', 'pass', array('class' => 'field'));
-                        echo form_input(array('type' => 'password', 'id' => 'pass', 'class' => 'field', 'name' => 'senha', 'value' => md5($usuario->senha), 'title' => 'Informe sua senha [ de 6 a 12 caracteres!! ]'));
+                        echo form_input(array('type' => 'password', 'id' => 'pass', 'class' => 'field', 'name' => 'senha', 'value' => $usuario->senha, 'title' => 'Informe sua senha [ de 6 a 12 caracteres!! ]'));
                     echo '</label>';
         ?>
 

@@ -20,7 +20,9 @@ class Usuarios extends CI_Controller{
         $this->page->loadPage($content);
     }
 
-
+    /**
+     * Colocar o usuário como inativo no banco
+     */
     public function inativar(){
 
         $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
@@ -35,6 +37,9 @@ class Usuarios extends CI_Controller{
         }
     }
 
+    /**
+     * Colocar o usuário como ativo no banco
+     */
     public function ativar(){
 
         $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);

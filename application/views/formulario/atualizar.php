@@ -43,10 +43,9 @@
                 <label class="label">
                     <span class="field">Turnos:
                         <select name="turnos" class="field" required>
-                            <option value="<?= $dados[0]->turnos; ?>"><?= $dados[0]->turnos; ?></option>
-                            <option value="Manhã">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
+                            <option value="Manhã" <?php if($dados[0]->turnos == "Manhã") echo 'selected="selected"'; ?>>Manhã</option>
+                            <option value="Tarde" <?php if($dados[0]->turnos == "Tarde") echo 'selected="selected"'; ?>>Tarde</option>
+                            <option value="Noite" <?php if($dados[0]->turnos == "Noite") echo 'selected="selected"'; ?>>Noite</option>
                         </select>
                     </span>
                 </label>

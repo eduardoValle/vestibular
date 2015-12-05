@@ -7,20 +7,19 @@ class EditarUsuario extends CI_Controller{
     function __construct(){
         parent::__construct();
 
-        $this->load->model('crud');
-
         if(!$this->session->userdata('email')):
             redirect('inicial?exe=restrito');
         endif;
+        $this->load->model('crud');
     }
 
     public function index(){
         
         $user_id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
-        $where =  "id={$this->db->escape($user_id)}";
+        $where = "id={$this->db->escape($user_id)}";
         $dados['usuarios'] = $this->crud->ler('usuarios', $where);
         
-        $content = $this->load->view('users/editar', $dados, true);
+        $content = $this->load->view('usuarios/editar', $dados, true);
         $this->page->loadPage($content);
     }
 
@@ -39,14 +38,14 @@ class EditarUsuario extends CI_Controller{
 
         if(!$this->form_validation->run()){
 
-            redirect("users/editarusuario?id={$user_id}&exe=erro");
+            redirect("usuarios/editarusuario?id={$user_id}&exe=erro");
 
         } else{
             $user_id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
             $set = array(
                 'nome'  => $this->input->post('nome'),
                 'email' => $this->input->post('email'),
-                'senha' => md5($this->input->post('senha')),
+                'senha' => $this->input->post('senha'),
                 'nivel' => $this->input->post('nivel'),
                 'status'=> $this->input->post('status')
             );
@@ -56,10 +55,10 @@ class EditarUsuario extends CI_Controller{
 
             if($result){
 
-                redirect("users/editarusuario?id={$user_id}&exe=sucesso");
+                redirect("usuarios/editarusuario?id={$user_id}&exe=sucesso");
             }else{
 
-                redirect("users/editarusuario?id={$user_id}&exe=erroatualizar");
+                redirect("usuarios/editarusuario?id={$user_id}&exe=erroatualizar");
             }
         }
     }
