@@ -2,11 +2,10 @@
 
     <article>
         <header>
-            <h1>Formulário de cadastro:</h1>
+            <h1>Cadastro de cursos</h1>
         </header>
         <?php
             //******    VALIDACAO DE ERROS DE DO FORMULARIO   ******//
-
             // Usando GET para validar o retorno e inserir a mensagem de erros adequada
             $get = filter_input(INPUT_GET, 'exe', FILTER_DEFAULT);
 
@@ -16,10 +15,10 @@
                     MsgErro("<b>Existem campos em branco, preencha todos os campos, por favor!!</b>", MSG_INFOR);
                 } elseif($get == 'sucesso'){
 
-                    MsgErro("<b>Ok, seu formulário foi enviado com sucesso!! Analisaremos o mais rápido possivel</b>", MSG_ACCEPT);
+                    MsgErro("<b>Ok, Cruso atualizado com sucesso!!</b>", MSG_ACCEPT);
                 } elseif($get == 'errocadastrar'){
 
-                    MsgErro("<b>Erro ao registrar formulário, não foi possivel registrar seu formulário!!</b>", MSG_ERROR);
+                    MsgErro("<b>Erro ao registrar formulário, não foi possivel registrar a atualização!!</b>", MSG_ERROR);
                 }
             }
 
@@ -28,80 +27,59 @@
                 'name' => 'UserForm',
                 'action' => '',
                 'method' => 'post',
-                'id' => 'usuario'
+                'id' => 'cadastrar_curso'
             );
 
-            echo form_open_multipart('#', $Form);
+            echo form_open_multipart('formulario/cadastrar/inserir', $Form);
         ?>
                 <!-- NOME -->
                 <label class="label">
-                    <span class="field">Nome:</span>
-                    <input type="text" class="field" name="nome" value="<?= $this->session->userdata('nome'); ?>" required/>
+                    <span class="field">Nome do curso:
+                        <input type="text" class="field" name="curso" required/>
+                    </span>
                 </label>
 
                 <!-- EMAIL -->
                 <label class="label">
-                    <span class="field">Email:</span>
-                    <input type="email" class="field" name="email" required/>
+                    <span class="field">Turnos:
+                        <select name="turnos" class="field" required>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
+                    </span>
                 </label>
                 
                 <!-- Endereço -->
                 <label class="label">
-                    <span class="field">Rua:</span>
-                    <input type="text" class="field" name="rua" required/>
+                    <span class="field">Períodos:
+                        <input type="text" class="field" name="periodos" required/>
+                    </span>
                 </label>
                 
-                 <div class="label_line">
+                <!-- Endereço -->
+                <label class="label">
+                    <span class="field">Valor:
+                        <input type="text" class="field" name="valor" required/>
+                    </span>
+                </label>
 
                 <!-- BAIRRO -->
                 <label class="label_small">
-                    <span class="field">Bairro:</span>
-                    <input type="text" class="formDate center" name="bairro"/>
-                </label>
-                
-                <!-- CIDADE -->
-                <label class="label_small">
-                    <span class="field">Cidade:</span>
-                    <input type="text" class="formDate center" name="cidade"/>
-                </label>
-                
-                <!-- ESTADO -->
-                <label class="label_small">
-                    <span class="field">Estado:</span>
-                    <input type="text" class="formDate center" name="estado"/>
+                    <span class="field">Descrição:</span>
+                    <textarea type="text" rows="8" name="descricao"></textarea>
                 </label>
 
-            </div><!--/line-->
+                <div class="label_line">
+                    <label class="label_small">
+                        <span class="field">Perfil do Egresso:</span>
+                        <textarea type="text" rows="8" name="perfil"></textarea>
+                    </label>
+                </div><!--/line-->
 
-            <div class="label_line">
-
-                <label class="label_small">
-                    <span class="field">Telefone</span>
-                    <input type="tel" class="formDate center" name="telefone"/>
-                </label>
-                
-                <!-- DATA -->
-                <label class="label_small">
-                    <span class="field">Data de Nascimento:</span>
-                    <input type="date" class="formDate center" name="data"/>
-                </label>
-
-                <!-- CURSO -->
-                <label class="label_small">
-                    <span class="field">Curso:</span>
-                    <select name="status">
-                        <option value="">Escolha o curso</option>
-                        <option value="1">&raquo&raquo Engenharia de computação</option>
-                        <option value="2">&raquo&raquo Engenharia Mecanica</option>
-                        <option value="3">&raquo&raquo Engenharia Minas</option>
-                        <option value="4">&raquo&raquo Engenharia de Produção</option>
-                        <option value="5">&raquo&raquo Engenharia de controle e automação</option>
-                        <option value="6">&raquo&raquo Medicina veterinaria</option>
-                    </select>
-                </label>
-
-            </div><!--/line-->
-            <input type="submit" class="btn black j_cadastar" value="Enviar" name="SendForm" />
+                <div class="label_line">
+                    <input type="submit" class="btn black j_cadastar" value="Cadastrar Curso" name="SendForm" />
+                </div><!--/line-->
         <?php echo form_close(); ?>
     </article>
     <div class="clear"></div>

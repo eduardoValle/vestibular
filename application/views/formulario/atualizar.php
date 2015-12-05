@@ -2,7 +2,7 @@
 
     <article>
         <header>
-            <h1>Atualizando o cadastro:</h1>
+            <h1>Atualizando o cadastro de cursos</h1>
         </header>
         <?php
             //******    VALIDACAO DE ERROS DE DO FORMULARIO   ******//
@@ -27,7 +27,7 @@
                 'name' => 'UserForm',
                 'action' => '',
                 'method' => 'post',
-                'id' => 'usuario'
+                'id' => 'atualizar_curso'
             );
 
             echo form_open_multipart('formulario/atualizar/update?id='.$dados[0]->id_curso, $Form);
@@ -42,14 +42,19 @@
                 <!-- EMAIL -->
                 <label class="label">
                     <span class="field">Turnos:
-                        <input type="text" class="field" name="turnos" value="<?= $dados[0]->turnos; ?>" required/>
+                        <select name="turnos" class="field" required>
+                            <option value="<?= $dados[0]->turnos; ?>"><?= $dados[0]->turnos; ?></option>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
                     </span>
                 </label>
                 
                 <!-- Endereço -->
                 <label class="label">
                     <span class="field">Períodos:
-                        <input type="text" class="field" name="periodos" value="<?= $dados[0]->periodos; ?>" required/>
+                        <input type="number" class="field" name="periodos" value="<?= $dados[0]->periodos; ?>" required/>
                     </span>
                 </label>
                 
@@ -74,7 +79,7 @@
                 </div><!--/line-->
 
                 <div class="label_line">
-                    <input type="submit" class="btn black j_cadastar" value="Enviar" name="SendForm" />
+                    <input type="submit" class="btn black j_cadastar" value="Atualizar Curso" name="SendForm" />
                 </div><!--/line-->
         <?php echo form_close(); ?>
     </article>
