@@ -2,8 +2,8 @@
 Trabalho final da disciplina de desenvolvimento web
 ###################
 
-Projeto usado como forma avaliativa da disciplina de Desenvolvimento WEB. Para o desenvolvimento desse
-projeto, usamos a biblioteca codeigniter.
+Projeto usado como forma avaliativa da disciplina de Desenvolvimento WEB.
+Para o desenvolvimento desse projeto, usei a biblioteca codeigniter.
 
 
 *******************
@@ -12,9 +12,8 @@ Requisitos do sistema
 
 É recomendado PHP na versão 5.4 ou mais recente.
 
-Ele deve funcionar em 5.2.4, bem como, mas nós aconselhamos que você não correr
-tais versões antigas do PHP, por causa do potencial de segurança e desempenho
-questões, bem como recursos ausentes.
+Ele deve funcionar na versão 5.2.4, mas nós aconselho que você não use tais versões antigas do PHP,
+por causa do potencial de segurança e desempenho, bem como recursos ausentes.
 
 ************
 Instalação
