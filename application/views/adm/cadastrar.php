@@ -30,7 +30,7 @@
                 'id' => 'cadastrar_curso'
             );
 
-            echo form_open_multipart('formulario/cadastrar/inserir', $Form);
+            echo form_open_multipart('adm/cadastrar/inserir', $Form);
         ?>
                 <!-- NOME -->
                 <label class="label">
@@ -43,6 +43,7 @@
                 <label class="label">
                     <span class="field">Turnos:
                         <select name="turnos" class="field" required>
+                            <option value="">Selecione o turno do curso</option>
                             <option value="Manhã">Manhã</option>
                             <option value="Tarde">Tarde</option>
                             <option value="Noite">Noite</option>

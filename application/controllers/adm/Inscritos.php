@@ -17,7 +17,7 @@ class Inscritos extends CI_Controller {
 
         $dados['dados'] = $this->crud->ler('inscritos');
         
-        $content = $this->load->view('formulario/inscritos', $dados, true);
+        $content = $this->load->view('adm/inscritos', $dados, true);
         $this->page->loadPage($content);
     }
 }

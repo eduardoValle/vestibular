@@ -9,7 +9,7 @@ class Inicio extends CI_Controller {
         
         $this->load->model('crud');
         if (!$this->session->userdata('nome')):
-            redirect('inicial?exe=restrito');
+            redirect('administrador?exe=restrito');
         endif;
     }
 
@@ -17,7 +17,7 @@ class Inicio extends CI_Controller {
      
         $dados['dados'] = $this->crud->ler('cursos');
 
-        $content = $this->load->view('formulario/listar', $dados, true);
+        $content = $this->load->view('adm/listar', $dados, true);
         $this->page->loadPage($content);
     }
 
@@ -30,9 +30,9 @@ class Inicio extends CI_Controller {
             $result = $this->crud->excluir('cursos', $where);
 
             if($result){
-                redirect("formulario/inicio?exe=sucesso");
+                redirect("adm/inicio?exe=sucesso");
             }else{
-                redirect("formulario/inicio?exe=erroexcluir");
+                redirect("adm/inicio?exe=erroexcluir");
             }
         }
     }
@@ -42,6 +42,6 @@ class Inicio extends CI_Controller {
      */
     public function logoff() {
         $this->session->sess_destroy();
-        redirect('inicial?exe=logoff');
+        redirect('administrador?exe=logoff');
     }
 }

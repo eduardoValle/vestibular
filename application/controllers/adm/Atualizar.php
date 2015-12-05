@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cadastrar extends CI_Controller {
+class Atualizar extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -15,12 +15,17 @@ class Cadastrar extends CI_Controller {
 
     public function index() {
 
-        $content = $this->load->view('formulario/cadastrar', "", true);
+        $idCurso = "id_curso={$this->input->get('detalhes')}";
+        $dados['dados'] = $this->crud->ler('cursos', $idCurso);
+        
+        $content = $this->load->view('adm/atualizar', $dados, true);
         $this->page->loadPage($content);
     }
 
-    public function inserir(){
+    
+    public function update(){
 
+        $curso_id = $this->input->get('id');
         $rules = array(
             array('field' => 'curso', 'label' => 'curso', 'rules' => 'required|ucwords'),
             array('field' => 'turnos', 'label' => 'turnos', 'rules' => 'required'),
@@ -34,10 +39,10 @@ class Cadastrar extends CI_Controller {
 
         if(!$this->form_validation->run()){
 
-            redirect("formulario/cadastrar?exe=erro");
+            redirect("adm/atualizar?detalhes={$curso_id}&exe=erro");
 
         } else{
-            $valores = array(
+            $set = array(
                 'curso'  => $this->input->post('curso'),
                 'turnos' => $this->input->post('turnos'),
                 'periodos' => $this->input->post('periodos'),
@@ -45,20 +50,23 @@ class Cadastrar extends CI_Controller {
                 'descricao' => $this->input->post('descricao'),
                 'perfil'=> $this->input->post('perfil')
             );
-            $result = $this->crud->inserir('cursos', $valores);
+
+            $where = "id_curso= {$curso_id}";
+            $result = $this->crud->atualizar('cursos', $set, $where);
 
             if($result){
 
-                redirect("formulario/cadastrar?exe=sucesso");
+                redirect("adm/atualizar?detalhes={$curso_id}&exe=sucesso");
             }else{
 
-                redirect("formulario/cadastrar?exe=errocadastrar");
+                redirect("adm/atualizar?detalhes={$curso_id}&exe=erroatualizar");
             }
         }
     }
     
+    
     public function contato() {
 
-        $this->page->loadPage('formulario/contato');
+        $this->page->loadPage('adm/contato');
     }
 }

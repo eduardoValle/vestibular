@@ -2,19 +2,19 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Inicial extends CI_Controller {
+class Administrador extends CI_Controller {
 
     function __construct() {
         parent::__construct();
         
         if ($this->session->userdata('nome')):
-            redirect('formulario/inicio');
+            redirect('adm/inicio');
         endif;
     }
 
     public function index() {
 
-        $this->load->view('index');
+        $this->load->view('administrador');
     }
 
     public function login() {
@@ -28,7 +28,7 @@ class Inicial extends CI_Controller {
 
         if (!$this->form_validation->run()) {
 
-            redirect('inicial?exe=erro');
+            redirect('administrador?exe=erro');
         } else {
 
             $this->load->model('user');
@@ -47,9 +47,9 @@ class Inicial extends CI_Controller {
                     'senha' => $user[0]->senha,
                     'nivel' => $user[0]->nivel
                 ));
-                redirect('formulario/inicio');
+                redirect('adm/inicio');
             } else {
-                redirect('inicial');
+                redirect('administrador?exe=errosenha');
             }
         }
     }

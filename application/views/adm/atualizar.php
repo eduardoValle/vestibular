@@ -30,7 +30,7 @@
                 'id' => 'atualizar_curso'
             );
 
-            echo form_open_multipart('formulario/atualizar/update?id='.$dados[0]->id_curso, $Form);
+            echo form_open_multipart('adm/atualizar/update?id='.$dados[0]->id_curso, $Form);
         ?>
                 <!-- NOME -->
                 <label class="label">
