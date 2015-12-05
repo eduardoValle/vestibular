@@ -57,9 +57,9 @@
                     <span class="field">Primeira opção de cruso:
                         <select name="opcao1" class="field" required>
                             <option value="">Selecione sua peimeira opção de cruso</option>
-                            <option value="Manhã">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
+                            <?php foreach ($cursos as $curso): ?>
+                                <option value="<?= $curso->curso; ?>"><?= $curso->curso; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </span>
                 </label>
@@ -69,9 +69,9 @@
                     <span class="field">Segunda opção de cruso:
                         <select name="opcao2" class="field" required>
                             <option value="">Selecione sua segunda opção de cruso</option>
-                            <option value="Manhã">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
+                            <?php foreach ($cursos as $curso): ?>
+                                <option value="<?= $curso->curso; ?>"><?= $curso->curso; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </span>
                 </label>

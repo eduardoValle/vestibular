@@ -34,6 +34,7 @@ class Inscricao extends CI_Controller {
 
             redirect("inscricao?exe=erro");
         } else{
+
             $valores = array(
                 'nome'  => $this->input->post('nome'),
                 'cpf' => $this->input->post('cpf'),
