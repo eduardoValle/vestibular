@@ -13,4 +13,13 @@ class page extends CI_Model {
         $content['content'] = $conteudo;
         $this->load->view('layout', $content);
     }
+
+    public function loadIndex($conteudo) {
+
+        $content['head'] = $this->load->view('page/head', null, true);
+        $content['header'] = $this->load->view('page/header_index', null, true);
+        $content['footer'] = $this->load->view('page/footer', null, true);
+        $content['content'] = $conteudo;
+        $this->load->view('layout', $content);
+    }
 }

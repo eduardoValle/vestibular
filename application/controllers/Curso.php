@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index extends CI_Controller {
+class Curso extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -11,10 +11,11 @@ class Index extends CI_Controller {
     }
 
     public function index() {
-     
-        $dados['dados'] = $this->crud->ler('cursos');
 
-        $content = $this->load->view('index', $dados, true);
+        $idCurso = "id_curso={$this->input->get('detalhes')}";
+        $dados['dados'] = $this->crud->ler('cursos', $idCurso);
+        
+        $content = $this->load->view('curso', $dados, true);
         $this->page->loadIndex($content);
-    }   
+    }
 }

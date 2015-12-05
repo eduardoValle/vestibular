@@ -1,7 +1,7 @@
 <!-- head -->
 <?php echo $head; ?>
 
-<body class="painel">
+<body class="painel font-size line-height">
     <!-- header -->
     <?php echo $header; ?>
 

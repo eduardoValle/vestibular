@@ -45,5 +45,4 @@
             </div>
         </div>
     </article>
-    <div class="clear"></div>
 </div>
